@@ -44,10 +44,19 @@ No data is fabricated between updates — data source is genuinely re-pulled at
 each run, so a stale figure means the next scheduled run hasn't fired yet, not
 that it's simulated.
 
+## Notifications
+
+- **Daily Update** — sends a push notification and an email (to the account
+  owner's inbox) each time it finishes, with a one-to-two-line takeaway of
+  the day's move.
+- **Weekly Wrap** — push notification not yet enabled; see below.
+
 ## Changing the watchlist or schedule
 
 The Routines are managed via the Claude Code Remote `list_triggers` /
-`update_trigger` tools (trigger IDs `trig_01HfTgzkM5DvWj98J4vaBZ2n` for Daily,
+`update_trigger` tools (trigger IDs `trig_01PLjdA24rjMmE8B7zEN66vn` for Daily,
 `trig_01SniQA11uDK7QdQ5ZocAH4f` for Weekly). To change the tracked symbols,
 update the Routine prompts via `update_trigger`; to change cadence, update the
-cron expression the same way.
+cron expression the same way. Notification settings can only be set at
+creation time, not via `update_trigger` — changing them requires deleting and
+recreating the Routine (same cron/prompt, plus a `notifications` field).
